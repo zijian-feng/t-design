@@ -1,0 +1,36 @@
+name: Publish new versions on npm
+run-name: ${{github.actor}} 
+on: 
+  release:
+    types: [published] # 监听 github Release 发布
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Setup nodejs
+        uses: actions/setup-node@v4
+        with:
+          node-versions: '22.11.0'
+          registry-url: 'https://registry.npmjs.org/'
+      - name: Install pnpm
+        run: npm i -g pnpm@10.6.5
+      - name: Install dependencies
+        run: pnpm install
+    
+  publish:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Setup nodejs
+        uses: actions/setup-node@v4
+        with:
+          node-versions: '22.11.0'
+          registry-url: 'https://registry.npmjs.org/'
+      - name: Publish new versions on npm
+        run: npm publish --provenance --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
