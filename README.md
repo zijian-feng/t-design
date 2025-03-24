@@ -1,54 +1,42 @@
-# React + TypeScript + Vite
+# T Design
+一款通过React开发的UI组件库，目前还处于初始开发阶段，请勿用于生产环境。
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+### 一、构建开发环境
+#### 1.1 nodejs
+版本号：` v22.11.0 `
 
-Currently, two official plugins are available:
+建议通过`nvm`对node做统一的版本管理：[nvm下载](https://github.com/coreybutler/nvm-windows/releases)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+安装 nodejs
+```
+nvm install 22
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+#### 1.2 pnpm
+版本号：`10.6.5`
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+安装 pnpm
+```powershell
+npm i -g pnpm@10.6.5
 ```
+
+#### 1.3 依赖安装
+⚠️ 不建议采用 pnpm 外的包安装器安装依赖
+```powershell
+pnpm install
+```
+
+#### 1.4 启动项目
+```
+pnpm dev
+```
+
+### 二、加入开发
+
+请通过邮件联系作者获得邮箱地址并注册成为`lark`使用者。
+
+**为什么?**
+
+1. 需要查看关于此项目的开发规范
+2. 能够及时得到并处理 pr
+3. 加入讨论和提供问题的解决方案

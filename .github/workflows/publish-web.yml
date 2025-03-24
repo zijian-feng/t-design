@@ -1,5 +1,5 @@
 name: Publish new versions on website
-run-name: ${{github.actor}} 
+run-name: ${{ github.actor }} - ${{ github.event_name }}
 on: [push]
 jobs:
   Explore-GitHub-Actions:
