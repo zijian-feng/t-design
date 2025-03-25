@@ -1,9 +1,18 @@
 import './App.scss'
+import TButton, { ButtonProps } from './components/Button'
+
+const buttonProps = {
+  className: 'active',
+  type: 'success',
+  size: 'small'
+} as ButtonProps
 
 const App = () => {
   return (
     <>
-      初始化项目
+      <TButton {...buttonProps}>
+        <div></div>
+      </TButton>
     </>
   )
 }
