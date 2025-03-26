@@ -7,6 +7,9 @@
     "build": "rsbuild -c config/prod.ts build",
     "lint": "eslint .",
     "preview": "rsbuild -c config/dev.ts preview",
+    "docs:dev": "rspress dev",
+    "docs:build": "rspress build",
+    "docs:preview": "rspress preview",
     "prepare": "husky",
     "preinstall": "node -e \"if(process.env.npm_execpath.indexOf('pnpm') === -1) { console.error('请使用pnpm安装依赖'); process.exit(1); }\""
   },
@@ -39,6 +42,7 @@
     "husky": "^9.1.7",
     "lint-staged": "^15.5.0",
     "prettier": "3.5.3",
+    "rspress": "^1.43.9",
     "sass": "^1.86.0",
     "typescript": "~5.7.2",
     "typescript-eslint": "^8.24.1"
