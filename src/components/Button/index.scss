@@ -1,0 +1,249 @@
+@mixin button-size(
+  $font-size: 14px,
+  $padding: 0 15px,
+  $line-height: 22px,
+  $height: 32px,
+  $gap: 8px
+) {
+  font-size: $font-size;
+  padding: $padding;
+  line-height: $line-height;
+  height: $height;
+  gap: $gap;
+}
+
+@mixin button-color($state, $color: var(--color-white)) {
+  $bgcolor: var(--color-#{$state}-600);
+
+  color: $color;
+  transition: 0.2s;
+  border-color: $bgcolor;
+  background-color: $bgcolor;
+
+  &:hover {
+    background-color: color-mix(in srgb, $bgcolor 90%, var(--color-white) 10%);
+  }
+
+  &:active {
+    background-color: color-mix(in srgb, $bgcolor 90%, var(--color-black) 10%);
+  }
+
+  &:disabled {
+    background-color: var(--color-info-100);
+    color: var(--color-info-300);
+    border-color: var(--color-info-300);
+    cursor: not-allowed;
+  }
+}
+
+@mixin variant($value, $state) {
+  @if $value == 'dashed' {
+    border-style: dashed;
+    color: var(--color-#{$state}-600);
+    background-color: var(--color-white);
+
+    &:hover {
+      background-color: var(--color-#{$state}-100);
+    }
+
+    &:active {
+      background-color: var(--color-#{$state}-200);
+    }
+  }
+
+  @if $value == 'solid' {
+    border-style: solid;
+  }
+
+  @if $value == 'filled' {
+    border-style: solid;
+    color: var(--color-#{$state}-600);
+    border-color: var(--color-#{$state}-100);
+    background-color: var(--color-#{$state}-100);
+
+    &:hover {
+      background-color: color-mix(
+        in srgb,
+        var(--color-#{$state}-100) 90%,
+        var(--color-white) 10%
+      );
+    }
+
+    &:active {
+      background-color: color-mix(
+        in srgb,
+        var(--color-#{$state}-100) 90%,
+        var(--color-black) 10%
+      );
+    }
+  }
+
+  @if $value == 'outlined' {
+    border-style: solid;
+    color: var(--color-#{$state}-600);
+    border-color: var(--color-#{$state}-600);
+    background-color: var(--color-white);
+
+    &:hover {
+      background-color: var(--color-#{$state}-100);
+    }
+
+    &:active {
+      background-color: var(--color-#{$state}-200);
+    }
+  }
+
+  @if $value == 'text' {
+    border-style: none;
+    color: var(--color-#{$state}-600);
+    background-color: var(--color-white);
+
+    &:hover {
+      background-color: var(--color-#{$state}-100);
+    }
+
+    &:active {
+      background-color: var(--color-#{$state}-200);
+    }
+  }
+}
+
+.t-button {
+  border-width: thin;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.size-default {
+  @include button-size;
+}
+
+.size-small {
+  @include button-size(12px, 0 7px, 20px, 24px, 4px);
+}
+
+.size-large {
+  @include button-size(16px, 0 20px, 24px, 40px, 12px);
+}
+
+.is-primary {
+  @include button-color('primary');
+}
+
+.is-success {
+  @include button-color('success');
+}
+
+.is-warning {
+  @include button-color('warning');
+}
+
+.is-danger {
+  @include button-color('danger');
+}
+
+.is-info {
+  @include button-color('info');
+}
+
+.is-dashed.is-primary {
+  @include variant('dashed', 'primary');
+}
+
+.is-solid.is-primary {
+  @include variant('solid', 'primary');
+}
+
+.is-filled.is-primary {
+  @include variant('filled', 'primary');
+}
+
+.is-outlined.is-primary {
+  @include variant('outlined', 'primary');
+}
+
+.is-text.is-primary {
+  @include variant('text', 'primary');
+}
+
+.is-dashed.is-success {
+  @include variant('dashed', 'success');
+}
+
+.is-solid.is-success {
+  @include variant('solid', 'success');
+}
+
+.is-filled.is-success {
+  @include variant('filled', 'success');
+}
+
+.is-outlined.is-success {
+  @include variant('outlined', 'success');
+}
+
+.is-text.is-success {
+  @include variant('text', 'success');
+}
+
+.is-dashed.is-warning {
+  @include variant('dashed', 'warning');
+}
+
+.is-solid.is-warning {
+  @include variant('solid', 'warning');
+}
+
+.is-filled.is-warning {
+  @include variant('filled', 'warning');
+}
+
+.is-outlined.is-warning {
+  @include variant('outlined', 'warning');
+}
+
+.is-text.is-warning {
+  @include variant('text', 'warning');
+}
+
+.is-dashed.is-danger {
+  @include variant('dashed', 'danger');
+}
+
+.is-solid.is-danger {
+  @include variant('solid', 'danger');
+}
+
+.is-filled.is-danger {
+  @include variant('filled', 'danger');
+}
+
+.is-outlined.is-danger {
+  @include variant('outlined', 'danger');
+}
+
+.is-text.is-danger {
+  @include variant('text', 'danger');
+}
+
+.is-dashed.is-info {
+  @include variant('dashed', 'info');
+}
+
+.is-solid.is-info {
+  @include variant('solid', 'info');
+}
+
+.is-filled.is-info {
+  @include variant('filled', 'info');
+}
+
+.is-outlined.is-info {
+  @include variant('outlined', 'info');
+}
+
+.is-text.is-info {
+  @include variant('text', 'info');
+}

@@ -1,7 +1,7 @@
-@use "sass:list";
+@use 'sass:list';
 
 $colors: (
-  "primary": (
+  'primary': (
     #fdf2f8,
     #fce7f3,
     #fccee8,
@@ -12,9 +12,9 @@ $colors: (
     #c6005c,
     #a3004c,
     #861043,
-    #510424
+    #510424,
   ),
-  "success": (
+  'success': (
     #ecfdf5,
     #d0fae5,
     #a4f4cf,
@@ -25,9 +25,9 @@ $colors: (
     #007a55,
     #006045,
     #004f3b,
-    #002c22
+    #002c22,
   ),
-  "warning": (
+  'warning': (
     #fffbeb,
     #fef3c6,
     #fee685,
@@ -38,9 +38,9 @@ $colors: (
     #bb4d00,
     #973c00,
     #7b3306,
-    #461901
+    #461901,
   ),
-  "danger": (
+  'danger': (
     #fff1f2,
     #ffe4e6,
     #ffccd3,
@@ -51,9 +51,9 @@ $colors: (
     #c70036,
     #a50036,
     #8b0836,
-    #4d0218
+    #4d0218,
   ),
-  "info": (
+  'info': (
     #fafafa,
     #f4f4f5,
     #e4e4e7,
@@ -64,11 +64,13 @@ $colors: (
     #3f3f46,
     #27272a,
     #18181b,
-    #09090b
-  )
+    #09090b,
+  ),
 );
 
 :root {
+  --color-white: #fff;
+  --color-black: #000;
   @each $name, $values in $colors {
     @for $i from 1 through list.length($values) {
       $index: ($i - 1) * 100;
@@ -78,7 +80,7 @@ $colors: (
       @if $i == list.length($values) {
         $index: 950;
       }
-      --#{$name}-#{$index}: #{list.nth($values, $i)};
+      --color-#{$name}-#{$index}: #{list.nth($values, $i)};
     }
   }
 }
