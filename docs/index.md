@@ -3,8 +3,7 @@ pageType: home
 
 hero:
   name: TDesign
-  text: React开发的UI组件库
-  tagline: 现代化文档开发技术栈
+  text: 轻量化React组件库
   actions:
     - theme: brand
       text: 介绍
@@ -14,8 +13,8 @@ hero:
       link: /zh/guide/getting-started
 
 features:
-  - title: 'MDX: 使用灵活语法编写内容'
-    details: MDX 是一种强大的内容编写方式，你可以在 Markdown 中使用 React 组件。
+  - title: 'WCAG 2A标准'
+    details: 配色采用符合WCAG 2A标准的方案，让色盲群体也能使用。
     icon: 📦
   - title: '功能丰富: 一站式解决方案'
     details: 对全文搜索、国际化等常见功能可以做到开箱即用。

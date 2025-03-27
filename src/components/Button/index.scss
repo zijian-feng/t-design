@@ -13,7 +13,7 @@
 }
 
 @mixin button-color($state, $color: var(--color-white)) {
-  $bgcolor: var(--color-#{$state}-600);
+  $bgcolor: var(--color-#{$state}-500);
 
   color: $color;
   transition: 0.2s;
@@ -29,7 +29,7 @@
   }
 
   &:disabled {
-    background-color: var(--color-info-100);
+    background-color: var(--color-info-50);
     color: var(--color-info-300);
     border-color: var(--color-info-300);
     cursor: not-allowed;
@@ -39,15 +39,15 @@
 @mixin variant($value, $state) {
   @if $value == 'dashed' {
     border-style: dashed;
-    color: var(--color-#{$state}-600);
+    color: var(--color-#{$state}-500);
     background-color: var(--color-white);
 
     &:hover {
-      background-color: var(--color-#{$state}-100);
+      background-color: var(--color-#{$state}-50);
     }
 
     &:active {
-      background-color: var(--color-#{$state}-200);
+      background-color: var(--color-#{$state}-100);
     }
   }
 
@@ -57,14 +57,14 @@
 
   @if $value == 'filled' {
     border-style: solid;
-    color: var(--color-#{$state}-600);
-    border-color: var(--color-#{$state}-100);
-    background-color: var(--color-#{$state}-100);
+    color: var(--color-#{$state}-500);
+    border-color: var(--color-#{$state}-50);
+    background-color: var(--color-#{$state}-50);
 
     &:hover {
       background-color: color-mix(
         in srgb,
-        var(--color-#{$state}-100) 90%,
+        var(--color-#{$state}-50) 90%,
         var(--color-white) 10%
       );
     }
@@ -72,7 +72,7 @@
     &:active {
       background-color: color-mix(
         in srgb,
-        var(--color-#{$state}-100) 90%,
+        var(--color-#{$state}-50) 90%,
         var(--color-black) 10%
       );
     }
@@ -80,30 +80,30 @@
 
   @if $value == 'outlined' {
     border-style: solid;
-    color: var(--color-#{$state}-600);
-    border-color: var(--color-#{$state}-600);
+    color: var(--color-#{$state}-500);
+    border-color: var(--color-#{$state}-500);
     background-color: var(--color-white);
 
     &:hover {
-      background-color: var(--color-#{$state}-100);
+      background-color: var(--color-#{$state}-50);
     }
 
     &:active {
-      background-color: var(--color-#{$state}-200);
+      background-color: var(--color-#{$state}-100);
     }
   }
 
   @if $value == 'text' {
     border-style: none;
-    color: var(--color-#{$state}-600);
+    color: var(--color-#{$state}-500);
     background-color: var(--color-white);
 
     &:hover {
-      background-color: var(--color-#{$state}-100);
+      background-color: var(--color-#{$state}-50);
     }
 
     &:active {
-      background-color: var(--color-#{$state}-200);
+      background-color: var(--color-#{$state}-100);
     }
   }
 }
