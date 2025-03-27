@@ -11,7 +11,7 @@ const Container = (props: MainProps) => {
   const { children, tagName = 'div', className = '' } = props
   return createElement(tagName, {
     children,
-    className: classNames('t-container', className)
+    className: classNames('t-container flex flex-column', className)
   })
 }
 

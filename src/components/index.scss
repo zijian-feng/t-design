@@ -71,6 +71,7 @@ $colors: (
 :root {
   --color-white: #fff;
   --color-black: #000;
+  --box-shadow-s: 0 0 0;
   @each $name, $values in $colors {
     @for $i from 1 through list.length($values) {
       $index: ($i - 1) * 100;
@@ -139,6 +140,14 @@ h6 {
 
 .items-center {
   align-items: center;
+}
+
+.flex-row {
+  flex-direction: row;
+}
+
+.flex-column {
+  flex-direction: column;
 }
 
 .flex-center {
