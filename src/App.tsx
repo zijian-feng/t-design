@@ -3,7 +3,7 @@ import TButton, { ButtonProps } from './components/Button'
 
 const buttonProps = {
   icon: '$',
-  size: 'large',
+  size: 'large'
 } as ButtonProps
 
 const App = () => {

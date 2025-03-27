@@ -5,5 +5,7 @@ package-lock.json
 package.json
 pnpm-lock.yaml
 
+.github
+
 # Ignore all HTML files:
 **/*.html

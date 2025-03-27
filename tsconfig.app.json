@@ -24,7 +24,7 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["src", "docs", "rspress.config.ts"],
+  "include": ["src", "docs", "rspress.config.ts", "eslint.config.mjs"],
   "mdx": {
     "checkMdx": true
   }

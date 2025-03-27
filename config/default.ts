@@ -5,12 +5,12 @@ import { pluginSass } from '@rsbuild/plugin-sass'
 
 export default defineConfig({
   html: {
-    title: 'T Design',
+    title: 'T Design'
   },
   plugins: [pluginReact(), pluginSass()],
   source: {
     entry: {
-      index: resolve(__dirname, '../src/main.tsx'),
-    },
-  },
+      index: resolve(__dirname, '../src/main.tsx')
+    }
+  }
 })

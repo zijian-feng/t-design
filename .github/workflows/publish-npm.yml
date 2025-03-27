@@ -1,6 +1,6 @@
 name: Publish new versions on npm
-run-name: ${{github.actor}} 
-on: 
+run-name: ${{github.actor}}
+on:
   release:
     types: [published] # 监听 github Release 发布
 jobs:
@@ -18,7 +18,7 @@ jobs:
         run: npm i -g pnpm@10.6.5
       - name: Install dependencies
         run: pnpm install
-    
+
   publish:
     needs: build
     runs-on: ubuntu-latest

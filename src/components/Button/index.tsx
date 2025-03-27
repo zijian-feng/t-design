@@ -76,7 +76,7 @@ const Button = (props: ButtonProps) => {
     size = 'default',
     variant = 'solid',
     state = 'primary',
-    iconPosition = 'left',
+    iconPosition = 'left'
   } = props
 
   return (
@@ -89,14 +89,14 @@ const Button = (props: ButtonProps) => {
         `is-${state}`,
         `size-${size}`,
         `is-${variant}`,
-        className,
+        className
       )}
       style={{
         outline: 'none',
         borderRadius: '4px',
         display: 'flex',
         alignItems: 'center',
-        flexDirection: iconPosition === 'left' ? 'row' : 'row-reverse',
+        flexDirection: iconPosition === 'left' ? 'row' : 'row-reverse'
       }}
     >
       <div className="t-button_icon">{icon}</div>

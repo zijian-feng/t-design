@@ -5,14 +5,14 @@ import { mergeRsbuildConfig } from '@rsbuild/core'
 export default mergeRsbuildConfig(defaultConfig, {
   mode: 'development',
   dev: {
-    hmr: true,
+    hmr: true
   },
   server: {
-    open: true,
+    open: true
   },
   resolve: {
     alias: {
-      '@': resolve(__dirname, '../src'),
-    },
-  },
+      '@': resolve(__dirname, '../src')
+    }
+  }
 })
