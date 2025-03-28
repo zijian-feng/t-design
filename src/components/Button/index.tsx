@@ -1,13 +1,14 @@
 import './index.scss'
+import type { Props } from '../type'
 import classNames from 'classnames'
-import { ButtonHTMLAttributes, FC, HTMLAttributes, ReactNode } from 'react'
+import { ButtonHTMLAttributes, type FC, ReactNode } from 'react'
 
-export type ButtonState = 'primary' | 'success' | 'warning' | 'danger' | 'info'
-export type ButtonSize = 'small' | 'large' | 'default'
 export type ButtonIconPosition = 'left' | 'right'
+export type ButtonSize = 'small' | 'large' | 'default'
 export type ButtonVariant = 'text' | 'outlined' | 'filled' | 'solid' | 'dashed'
+export type ButtonState = 'primary' | 'success' | 'warning' | 'danger' | 'info'
 
-export interface ButtonProps extends HTMLAttributes<HTMLButtonElement> {
+export interface ButtonProps extends Props {
   /**
    * 设置按钮的大小
    * @default default

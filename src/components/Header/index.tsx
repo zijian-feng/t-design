@@ -1,5 +1,5 @@
-import { FC } from 'react'
-import { Props } from '../type'
+import { type FC } from 'react'
+import type { Props } from '../type'
 import classNames from 'classnames'
 
 export interface HeaderProps extends Props {

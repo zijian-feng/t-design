@@ -1,13 +1,13 @@
 import './index.scss'
 
-import { Props } from '../type'
+import type { Props } from '../type'
 import classNames from 'classnames'
 import {
   Children,
   createElement,
-  FC,
+  type FC,
   isValidElement,
-  ReactNode,
+  type ReactNode,
   useEffect,
   useState
 } from 'react'

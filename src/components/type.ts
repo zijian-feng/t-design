@@ -1,5 +1,7 @@
+import type { CSSProperties, ReactNode } from 'react'
+
 export interface Props {
   className?: string
-  style?: React.CSSProperties
-  children?: React.ReactNode
+  style?: CSSProperties
+  children?: ReactNode
 }

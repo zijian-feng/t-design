@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import { Props } from '../type'
+import type { Props } from '../type'
 import classNames from 'classnames'
 
 export interface FooterProps extends Props {

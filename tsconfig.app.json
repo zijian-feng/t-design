@@ -22,7 +22,8 @@
 
     "paths": {
       "@/*": ["./src/*"]
-    }
+    },
+    "declaration": true
   },
   "include": ["src", "docs", "rspress.config.ts", "eslint.config.mjs"],
   "mdx": {

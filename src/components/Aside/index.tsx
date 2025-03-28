@@ -1,7 +1,7 @@
 import './index.scss'
 
-import { FC } from 'react'
-import { Props } from '../type'
+import { type FC } from 'react'
+import type { Props } from '../type'
 import classNames from 'classnames'
 
 export interface AsideProps extends Props {
