@@ -1,13 +1,13 @@
 import './index.scss'
 import classNames from 'classnames'
-import { ButtonHTMLAttributes, ReactNode } from 'react'
+import { ButtonHTMLAttributes, FC, HTMLAttributes, ReactNode } from 'react'
 
 export type ButtonState = 'primary' | 'success' | 'warning' | 'danger' | 'info'
 export type ButtonSize = 'small' | 'large' | 'default'
 export type ButtonIconPosition = 'left' | 'right'
 export type ButtonVariant = 'text' | 'outlined' | 'filled' | 'solid' | 'dashed'
 
-export interface ButtonProps {
+export interface ButtonProps extends HTMLAttributes<HTMLButtonElement> {
   /**
    * 设置按钮的大小
    * @default default
@@ -19,11 +19,6 @@ export interface ButtonProps {
    */
   icon?: ReactNode
   /**
-   * 设置按钮的类名
-   * @default ''
-   */
-  className?: string
-  /**
    * 设置按钮的状态
    * @default primary
    */
@@ -33,11 +28,6 @@ export interface ButtonProps {
    * @default solid
    */
   variant?: ButtonVariant
-  /**
-   * 设置按钮的内容
-   * @default null
-   */
-  children: React.ReactNode
   /**
    * 设置按钮的图标位置
    * @default left
@@ -65,20 +55,18 @@ export interface ButtonProps {
  * @date 2025/3/26
  * @description 按钮组件
  */
-const Button = (props: ButtonProps) => {
-  const {
-    icon,
-    type,
-    onClick,
-    children,
-    disabled,
-    className = '',
-    size = 'default',
-    variant = 'solid',
-    state = 'primary',
-    iconPosition = 'left'
-  } = props
-
+const Button: FC<ButtonProps> = ({
+  icon,
+  type,
+  onClick,
+  children,
+  disabled,
+  className = '',
+  size = 'default',
+  variant = 'solid',
+  state = 'primary',
+  iconPosition = 'left'
+}) => {
   return (
     <button
       type={type}
@@ -99,8 +87,8 @@ const Button = (props: ButtonProps) => {
         flexDirection: iconPosition === 'left' ? 'row' : 'row-reverse'
       }}
     >
-      <div className="t-button_icon">{icon}</div>
-      <div className="t-button_wrapper">{children}</div>
+      {icon && <div className="t-button_icon">{icon}</div>}
+      {children && <div className="t-button_wrapper">{children}</div>}
     </button>
   )
 }

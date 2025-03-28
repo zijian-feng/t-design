@@ -1,14 +1,16 @@
-import { ReactNode } from 'react'
+import { FC } from 'react'
+import { Props } from '../type'
 import classNames from 'classnames'
 
-export interface HeaderProps {
-  children?: ReactNode
-  className?: string
+export interface HeaderProps extends Props {
   height?: `${number}px` | `${number}rem` | `${number}em` | `${number}%`
 }
 
-const Header = (props: HeaderProps) => {
-  const { height = '60px', className = '', children } = props
+const Header: FC<HeaderProps> = ({
+  height = '60px',
+  className = '',
+  children
+}) => {
   return (
     <header style={{ height }} className={classNames('t-header', className)}>
       {children}
