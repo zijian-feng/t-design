@@ -1,5 +1,5 @@
 {
-  "name": "t-design",
+  "name": "t-design-ui",
   "version": "1.0.0",
   "description": "UI 组件库",
   "scripts": {
@@ -11,7 +11,8 @@
     "docs:build": "rspress build",
     "docs:preview": "rspress preview",
     "prepare": "husky",
-    "preinstall": "node -e \"if(process.env.npm_execpath.indexOf('pnpm') === -1) { console.error('请使用pnpm安装依赖'); process.exit(1); }\""
+    "preinstall": "node -e \"if(process.env.npm_execpath.indexOf('pnpm') === -1) { console.error('请使用pnpm安装依赖'); process.exit(1); }\"",
+    "build:cpn": "rollup -c rollup.config.ts --configPlugin typescript"
   },
   "keywords": [],
   "author": "fengzijian <fengzijian@happycloudsign.com>",
@@ -22,6 +23,7 @@
     "url": "git+https://github.com/zijian-feng/t-design.git"
   },
   "dependencies": {
+    "dayjs": "^1.11.13",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },
@@ -30,12 +32,6 @@
     "@babel/preset-react": "^7.26.3",
     "@babel/preset-typescript": "^7.27.0",
     "@eslint/js": "^9.21.0",
-    "@rollup/plugin-babel": "^6.0.4",
-    "@rollup/plugin-commonjs": "^28.0.3",
-    "@rollup/plugin-dynamic-import-vars": "^2.1.5",
-    "@rollup/plugin-node-resolve": "^16.0.1",
-    "@rollup/plugin-terser": "^0.4.4",
-    "@rollup/plugin-typescript": "^12.1.2",
     "@rsbuild/core": "^1.2.19",
     "@rsbuild/plugin-react": "^1.1.1",
     "@rsbuild/plugin-sass": "^1.2.2",
@@ -43,6 +39,7 @@
     "@types/react": "^19.0.10",
     "@types/react-dom": "^19.0.4",
     "classnames": "^2.5.1",
+    "esbuild-sass-plugin": "^3.3.1",
     "eslint": "^9.21.0",
     "eslint-config-prettier": "^10.1.1",
     "eslint-plugin-react-hooks": "^5.1.0",
@@ -51,10 +48,9 @@
     "husky": "^9.1.7",
     "lint-staged": "^15.5.0",
     "prettier": "3.5.3",
-    "rollup": "^4.37.0",
-    "rollup-plugin-postcss": "^4.0.2",
     "rspress": "^1.43.9",
     "sass": "^1.86.0",
+    "tsup": "^8.4.0",
     "typescript": "~5.7.2",
     "typescript-eslint": "^8.24.1"
   },

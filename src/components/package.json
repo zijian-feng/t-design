@@ -1,0 +1,37 @@
+{
+  "name": "@t-design-ui/react",
+  "version": "0.1.0",
+  "description": "",
+  "scripts": {
+    "build": "tsup"
+  },
+  "keywords": [],
+  "author": "fengzijian <fengzijian@happycloudsign.com>",
+  "license": "ISC",
+  "packageManager": "pnpm@10.6.5",
+  "dependencies": {
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "@parcel/watcher",
+      "esbuild"
+    ]
+  },
+  "devDependencies": {
+    "esbuild-sass-plugin": "^3.3.1",
+    "typescript": "^5.8.2",
+    "tsup": "^8.4.0"
+  },
+  "exports": {
+    ".": {
+      "browser": {
+        "default": "./es/index.mjs"
+      },
+      "node": {
+        "default": "./lib/index.js"
+      }
+    }
+  }
+}

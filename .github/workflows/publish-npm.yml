@@ -16,9 +16,20 @@ jobs:
           registry-url: 'https://registry.npmjs.org/'
       - name: Install pnpm
         run: npm i -g pnpm@10.6.5
+      - name: Copy Components
+        run: mv src/components components
+      - name: Copy Package.json
+        run: mv package.cpn.json components/package.json
+      - name: Copy tsconfig.json
+        run: mv tsconfig.cpn.json components/tsconfig.json
+      -name: Copy tsup.config.ts
+        run: mv tsup.config.ts components/tsup.config.ts
+      - name: Enter Components
+        run: cd Components
       - name: Install dependencies
         run: pnpm install
-
+      - name: Build components
+        run: pnpm build
   publish:
     needs: build
     runs-on: ubuntu-latest
