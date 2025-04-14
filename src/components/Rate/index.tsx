@@ -4,8 +4,8 @@ import IconStar from '@/icons/IconStar'
 
 export interface RateProps {
   count?: number
-  defaultValue?: number
   value?: number
+  defaultValue?: number
   onChange?: (value: number) => void
 }
 
