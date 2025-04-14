@@ -16,10 +16,10 @@ const Rate: FC<RateProps> = ({
   onChange
 }) => {
   const [internalValue, setInternalValue] = useState(defaultValue)
-  const currentValue = value ? value : internalValue
+  const currentValue = value !== undefined ? value : internalValue
 
   const handleClick = (newValue: number) => {
-    if (!value) {
+    if (value === undefined) {
       setInternalValue(newValue)
     }
     onChange?.(newValue)
@@ -27,7 +27,7 @@ const Rate: FC<RateProps> = ({
 
   return (
     <Flex gap={4}>
-      {new Array(count).fill('#eee').map((color, i) => (
+      {new Array(count < 1 ? 1 : count).fill('#eee').map((color, i) => (
         <IconStar
           key={i}
           color={currentValue - i > 0 ? '#fadb14' : color}
