@@ -12,14 +12,14 @@ export interface RateProps {
 const Rate: FC<RateProps> = ({
   count = 5,
   value,
-  defaultValue = 5,
+  defaultValue = 0,
   onChange
 }) => {
   const [internalValue, setInternalValue] = useState(defaultValue)
-  const currentValue = value !== undefined ? value : internalValue
+  const currentValue = value ? value : internalValue
 
   const handleClick = (newValue: number) => {
-    if (value === undefined) {
+    if (!value) {
       setInternalValue(newValue)
     }
     onChange?.(newValue)
