@@ -26,3 +26,4 @@ doc_build
 
 # lock files
 pnpm-lock.yml
+pnpm-lock.yaml
