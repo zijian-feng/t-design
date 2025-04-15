@@ -162,3 +162,9 @@ h6 {
   @extend .justify-center;
   @extend .items-center;
 }
+
+.cursor-pointer {
+  &:hover {
+    cursor: pointer;
+  }
+}
