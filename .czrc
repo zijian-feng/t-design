@@ -28,9 +28,9 @@
       { "value": "chore", "name": "chore:    不修改源码或测试文件的其他更改", "emoji": ":hammer:" },
       { "value": "revert", "name": "revert:   回退之前的提交", "emoji": ":rewind:" }
   ],
-  "useEmoji": false,
+  "useEmoji": true,
   "emojiAlign": "center",
-  "useAI": false,
+  "useAI": true,
   "aiNumber": 1,
   "themeColorCode": "",
   "scopes": [],
