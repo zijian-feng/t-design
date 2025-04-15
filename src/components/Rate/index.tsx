@@ -1,5 +1,5 @@
 import Flex from '../Flex'
-import { FC, useCallback, useMemo, useState } from 'react'
+import { FC, useState } from 'react'
 
 export interface RateProps {
   /**
@@ -29,6 +29,7 @@ const Rate: FC<RateProps> = ({
   defaultValue = 0,
   onChange
 }) => {
+  const [internalCount] = useState(count)
   const [internalValue, setInternalValue] = useState(defaultValue)
 
   const handleClick = (newValue: number) => {
@@ -38,20 +39,9 @@ const Rate: FC<RateProps> = ({
     onChange?.(newValue)
   }
 
-  const stars = useMemo(
-    () => new Array(count < 1 ? 1 : count).fill('#eee'),
-    [count]
-  )
-
-  const fillColor = useCallback(
-    (i: number, color: string) =>
-      (value ?? internalValue) - i > 0 ? '#fadb14' : color,
-    [value, internalValue]
-  )
-
   return (
     <Flex gap={4}>
-      {stars.map((color, i) => (
+      {Array.from({ length: internalCount }, (_, i) => (
         <svg
           key={i}
           width="24px"
@@ -61,23 +51,23 @@ const Rate: FC<RateProps> = ({
           onClick={handleClick.bind(this, i + 1)}
         >
           <path
-            fill={fillColor(i, color)}
+            fill={(value ?? internalValue) - i > 0 ? '#fadb14' : '#eee'}
             d="
-              M12 17.27
-              l4.15 2.51
-              c.76.46 1.69-.22 1.49-1.08
-              l-1.1-4.72 3.67-3.18
-              c.67-.58.31-1.68-.57-1.75
-              l-4.83-.41-1.89-4.46
-              c-.34-.81-1.5-.81-1.84 0
-              L9.19 8.63
-              l-4.83.41
-              c-.88.07-1.24 1.17-.57 1.75
-              l3.67 3.18-1.1 4.72
-              c-.2.86.73 1.54 1.49 1.08
-              l4.15-2.51
-              z
-            "
+                M12 17.27
+                l4.15 2.51
+                c.76.46 1.69-.22 1.49-1.08
+                l-1.1-4.72 3.67-3.18
+                c.67-.58.31-1.68-.57-1.75
+                l-4.83-.41-1.89-4.46
+                c-.34-.81-1.5-.81-1.84 0
+                L9.19 8.63
+                l-4.83.41
+                c-.88.07-1.24 1.17-.57 1.75
+                l3.67 3.18-1.1 4.72
+                c-.2.86.73 1.54 1.49 1.08
+                l4.15-2.51
+                z
+              "
           />
         </svg>
       ))}
