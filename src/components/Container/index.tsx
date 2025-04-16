@@ -1,18 +1,18 @@
 import './index.scss'
 
-import type { Props } from '../type'
 import classNames from 'classnames'
 import {
   Children,
   createElement,
   type FC,
+  HTMLAttributes,
   isValidElement,
   type ReactNode,
   useEffect,
   useState
 } from 'react'
 
-export interface MainProps extends Props {
+export interface MainProps extends HTMLAttributes<HTMLElement> {
   tagName?: string
 }
 
@@ -29,9 +29,9 @@ const getIndex = (children: ReactNode) => {
 
 const Container: FC<MainProps> = ({
   children,
-  tagName = 'div',
   className = '',
-  style = {}
+  tagName = 'div',
+  ...props
 }) => {
   const [direction, setDirection] = useState<Direction>('flex-row')
   useEffect(() => {
@@ -42,7 +42,7 @@ const Container: FC<MainProps> = ({
   }, [children])
 
   return createElement(tagName, {
-    style,
+    ...props,
     children,
     className: classNames(
       't-container w-full h-full flex',

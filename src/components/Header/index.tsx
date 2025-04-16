@@ -1,18 +1,23 @@
-import { type FC } from 'react'
-import type { Props } from '../type'
+import { HTMLAttributes, type FC } from 'react'
 import classNames from 'classnames'
 
-export interface HeaderProps extends Props {
+export interface HeaderProps extends HTMLAttributes<HTMLElement> {
   height?: `${number}px` | `${number}rem` | `${number}em` | `${number}%`
 }
 
 const Header: FC<HeaderProps> = ({
   height = '60px',
   className = '',
-  children
+  children,
+  style = {},
+  ...props
 }) => {
   return (
-    <header style={{ height }} className={classNames('t-header', className)}>
+    <header
+      {...props}
+      style={{ height, ...style }}
+      className={classNames('t-header', className)}
+    >
       {children}
     </header>
   )

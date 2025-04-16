@@ -88,8 +88,9 @@ export default definePrompt({
   skipQuestions: [],
   issuePrefixes: [
     { value: 'closed', name: '已完成: 問題已处理' },
-    { value: 'fixed', name: '修复缺陷: 修复缺陷' },
-    { value: 'resolved', name: '已解决: 问题已解决' }
+    { value: 'done', name: '已完成: 問題已处理' },
+    { value: 'fixed', name: '已完成:  問題已修復' },
+    { value: 'resolved', name: '已完成: 问题已解决' }
   ],
   customIssuePrefixAlign: 'top',
   emptyIssuePrefixAlias: '跳过',

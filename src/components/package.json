@@ -2,6 +2,10 @@
   "name": "@t-design-ui/react",
   "version": "0.1.0",
   "description": "",
+  "main": "lib/index.js",
+  "module": "es/index.js",
+  "unpkg": "dist/antd.min.js",
+  "typings": "es/index.d.ts",
   "scripts": {
     "build": "tsup"
   },
