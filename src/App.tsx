@@ -144,7 +144,7 @@ const App = () => {
     //   </Flex>
     // </>
     <Flex gap={20} align="center">
-      <Rate value={state} onChange={setState} />
+      <Rate character="A" allowHalf value={state} onChange={setState} />
       <Button onClick={() => setState(4)}>click</Button>
     </Flex>
   )
