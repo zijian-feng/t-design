@@ -1,5 +1,7 @@
 import Flex from '../Flex'
 import { FC, useState, ReactNode } from 'react'
+import classNames from 'classnames'
+import styles from './index.module.scss'
 
 export interface RateProps {
   /**
@@ -36,7 +38,9 @@ export interface RateProps {
    * 可以是字符串或React节点
    * @default null
    */
-  character?: ReactNode | ((props: { index: number, value: number }) => ReactNode)
+  character?:
+    | ReactNode
+    | ((props: { index: number; value: number }) => ReactNode)
   /**
    * 未选中时的颜色
    * @default #eee
@@ -64,11 +68,12 @@ const Rate: FC<RateProps> = ({
   const [internalValue, setInternalValue] = useState(defaultValue)
   const [hoverValue, setHoverValue] = useState<number | null>(null)
 
-  const displayValue = hoverValue !== null ? hoverValue : (value ?? internalValue)
+  const displayValue =
+    hoverValue !== null ? hoverValue : (value ?? internalValue)
 
   const handleClick = (newValue: number) => {
     if (readonly) return
-    
+
     if (value === undefined) {
       setInternalValue(newValue)
     }
@@ -77,7 +82,7 @@ const Rate: FC<RateProps> = ({
 
   const handleMouseMove = (index: number, event: React.MouseEvent) => {
     if (readonly) return
-    
+
     if (!allowHalf) {
       setHoverValue(index + 1)
       return
@@ -94,16 +99,10 @@ const Rate: FC<RateProps> = ({
     setHoverValue(null)
   }
 
-  // 渲染自定义字符或默认星星
-  const renderCharacter = (index: number) => {
-    if (character) {
-      if (typeof character === 'function') {
-        return character({ index, value: displayValue })
-      }
-      return character
-    }
+  const renderStar = (index: number) => {
+    const isHovered =
+      hoverValue !== null && hoverValue >= index + (allowHalf ? 0.5 : 1)
 
-    // 默认星星SVG
     return (
       <>
         {/* 背景星星 */}
@@ -111,30 +110,14 @@ const Rate: FC<RateProps> = ({
           width="24px"
           height="24px"
           viewBox="0 0 24 24"
-          style={{ 
-            position: 'absolute',
-            transition: 'transform 0.2s ease',
-            transform: hoverValue !== null && hoverValue >= index + (allowHalf ? 0.5 : 1) ? 'scale(1.2)' : 'scale(1)'
-          }}
+          className={classNames(styles.characterBase, {
+            [styles.hovered]: isHovered,
+            [styles.notHovered]: !isHovered
+          })}
         >
           <path
             fill={inactiveColor}
-            d="
-              M12 17.27
-              l4.15 2.51
-              c.76.46 1.69-.22 1.49-1.08
-              l-1.1-4.72 3.67-3.18
-              c.67-.58.31-1.68-.57-1.75
-              l-4.83-.41-1.89-4.46
-              c-.34-.81-1.5-.81-1.84 0
-              L9.19 8.63
-              l-4.83.41
-              c-.88.07-1.24 1.17-.57 1.75
-              l3.67 3.18-1.1 4.72
-              c-.2.86.73 1.54 1.49 1.08
-              l4.15-2.51
-              z
-            "
+            d="M12,1.73l3.76,7.82l8.41,1.23l-6.08,5.99l1.44,8.5L12,20.97l-7.53,4.3l1.44-8.5L-0.17,10.78l8.41-1.23L12,1.73z"
           />
         </svg>
 
@@ -144,31 +127,17 @@ const Rate: FC<RateProps> = ({
             width="24px"
             height="24px"
             viewBox="0 0 24 24"
-            style={{ 
-              position: 'absolute',
-              clipPath: displayValue - index < 1 ? 'inset(0 50% 0 0)' : 'none',
-              transition: 'transform 0.2s ease',
-              transform: hoverValue !== null && hoverValue >= index + (allowHalf ? 0.5 : 1) ? 'scale(1.2)' : 'scale(1)'
+            className={classNames(styles.characterBase, {
+              [styles.hovered]: isHovered,
+              [styles.notHovered]: !isHovered
+            })}
+            style={{
+              clipPath: displayValue - index < 1 ? 'inset(0 50% 0 0)' : 'none'
             }}
           >
             <path
               fill={activeColor}
-              d="
-                M12 17.27
-                l4.15 2.51
-                c.76.46 1.69-.22 1.49-1.08
-                l-1.1-4.72 3.67-3.18
-                c.67-.58.31-1.68-.57-1.75
-                l-4.83-.41-1.89-4.46
-                c-.34-.81-1.5-.81-1.84 0
-                L9.19 8.63
-                l-4.83.41
-                c-.88.07-1.24 1.17-.57 1.75
-                l3.67 3.18-1.1 4.72
-                c-.2.86.73 1.54 1.49 1.08
-                l4.15-2.51
-                z
-              "
+              d="M12,1.73l3.76,7.82l8.41,1.23l-6.08,5.99l1.44,8.5L12,20.97l-7.53,4.3l1.44-8.5L-0.17,10.78l8.41-1.23L12,1.73z"
             />
           </svg>
         )}
@@ -177,57 +146,51 @@ const Rate: FC<RateProps> = ({
   }
 
   const renderCustomCharacter = (index: number) => {
-    // 如果是默認星星，使用之前的渲染方法
-    if (!character) return renderCharacter(index)
-    
-    const characterNode = typeof character === 'function' 
-      ? character({ index, value: displayValue }) 
-      : character
-    
+    if (!character) return renderStar(index)
+
+    const characterNode =
+      typeof character === 'function'
+        ? character({ index, value: displayValue })
+        : character
+
+    const isHovered =
+      hoverValue !== null && hoverValue >= index + (allowHalf ? 0.5 : 1)
+    const isPartial = displayValue - index > 0 && displayValue - index < 1
+
     return (
       <>
-        {/* 背景層（未選中狀態） */}
-        <div style={{ 
-          position: 'absolute',
-          color: inactiveColor,
-          fontSize: '24px',
-          lineHeight: '24px',
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          width: '100%',
-          height: '100%',
-          transition: 'transform 0.2s ease',
-          transform: hoverValue !== null && hoverValue >= index + (allowHalf ? 0.5 : 1) ? 'scale(1.2)' : 'scale(1)'
-        }}>
+        {/* 背景层（未选中状态） */}
+        <div
+          className={classNames(styles.characterBase, {
+            [styles.hovered]: isHovered,
+            [styles.notHovered]: !isHovered
+          })}
+          style={{ color: inactiveColor }}
+        >
           {characterNode}
         </div>
-        
-        {/* 前景層（選中狀態） */}
+
+        {/* 前景层（选中状态） */}
         {displayValue - index > 0 && (
-          <div style={{ 
-            position: 'absolute',
-            color: activeColor,
-            fontSize: '24px',
-            lineHeight: '24px',
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            width: '100%',
-            height: '100%',
-            overflow: 'hidden',
-            transition: 'transform 0.2s ease',
-            transform: hoverValue !== null && hoverValue >= index + (allowHalf ? 0.5 : 1) ? 'scale(1.2)' : 'scale(1)'
-          }}>
-            {/* 創建包含字符的容器，並用半值裁剪 */}
-            <div style={{
-              width: '100%',
-              height: '100%',
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-              clipPath: displayValue - index < 1 ? 'inset(0 50% 0 0)' : 'none'
-            }}>
+          <div
+            className={classNames(
+              styles.characterBase,
+              styles.characterActive,
+              {
+                [styles.hovered]: isHovered,
+                [styles.notHovered]: !isHovered
+              }
+            )}
+            style={{
+              color: activeColor
+            }}
+          >
+            <div
+              className={classNames(styles.clipContainer, {
+                [styles.halfClip]: isPartial,
+                [styles.fullClip]: !isPartial
+              })}
+            >
               {characterNode}
             </div>
           </div>
@@ -237,14 +200,23 @@ const Rate: FC<RateProps> = ({
   }
 
   return (
-    <Flex gap={4} className={readonly ? "cursor-default" : "cursor-pointer"}>
+    <Flex
+      className={classNames(styles.rateContainer, {
+        [styles.readonly]: readonly,
+        [styles.interactive]: !readonly
+      })}
+    >
       {Array.from({ length: internalCount }, (_, i) => (
-        <div 
-          key={i} 
-          style={{ position: 'relative', width: '24px', height: '24px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}
+        <div
+          key={i}
+          className={styles.itemWrapper}
           onMouseMove={readonly ? undefined : (e) => handleMouseMove(i, e)}
           onMouseLeave={readonly ? undefined : handleMouseLeave}
-          onClick={readonly ? undefined : () => handleClick(hoverValue !== null ? hoverValue : i + 1)}
+          onClick={
+            readonly
+              ? undefined
+              : () => handleClick(hoverValue !== null ? hoverValue : i + 1)
+          }
         >
           {renderCustomCharacter(i)}
         </div>

@@ -18,12 +18,13 @@ const Flex: FC<FlexProps> = ({
   justify,
   vertical,
   reverse,
+  className,
   ...props
 }) => {
   return (
     <div
       {...props}
-      className={classNames('flex')}
+      className={classNames('flex', className)}
       style={{
         gap,
         flexWrap: wrap,
