@@ -27,3 +27,5 @@ doc_build
 # lock files
 pnpm-lock.yml
 pnpm-lock.yaml
+package-lock.json
+yarn.lock

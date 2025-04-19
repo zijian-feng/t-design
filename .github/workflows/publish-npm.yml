@@ -20,8 +20,8 @@ jobs:
         run: mv src/components components
       - name: Copy Package.json
         run: mv package.cpn.json components/package.json
-      - name: Copy tsconfig.json
-        run: mv tsconfig.cpn.json components/tsconfig.json
+      - name: Copy tsconfig.build.json
+        run: mv tsconfig.cpn.json components/tsconfig.build.json
       -name: Copy tsup.config.ts
         run: mv tsup.config.ts components/tsup.config.ts
       - name: Enter Components

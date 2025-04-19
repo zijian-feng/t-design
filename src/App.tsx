@@ -8,12 +8,7 @@ const App = () => {
   const [state, setState] = useState(3)
   return (
     <Flex gap={20} align="center">
-      <Rate
-        allowHalf
-        value={state}
-        // character="5"
-        onChange={setState}
-      />
+      <Rate allowHalf value={state} onChange={setState} />
       <Button onClick={() => setState(4)}>click</Button>
     </Flex>
   )

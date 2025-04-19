@@ -7,11 +7,13 @@ import { glob } from 'glob'
 import { writeFile } from 'fs/promises'
 
 export default defineConfig(async () => {
-  const entryFiles = await glob('src/components/**/index.tsx')
+  const entryFiles = await glob(
+    resolve(__dirname, '../src/components/**/index.tsx')
+  )
   const entry = Object.fromEntries(
     entryFiles.map((file) => {
       const entryName = basename(dirname(file))
-      return [entryName, `./${file}`]
+      return [entryName, file]
     })
   )
 
@@ -29,7 +31,9 @@ export default defineConfig(async () => {
     lib: [
       {
         dts: {
-          distPath: resolve(distRoot, 'lib/types')
+          bundle: false,
+          distPath: undefined,
+          autoExtension: true
         },
         format: 'cjs',
         output: {
@@ -40,7 +44,9 @@ export default defineConfig(async () => {
       },
       {
         dts: {
-          distPath: resolve(distRoot, 'es/types')
+          bundle: false,
+          distPath: undefined,
+          autoExtension: true
         },
         format: 'esm',
         output: {
@@ -51,7 +57,9 @@ export default defineConfig(async () => {
       },
       {
         dts: {
-          distPath: resolve(distRoot, 'dist/types')
+          bundle: false,
+          distPath: undefined,
+          autoExtension: true
         },
         format: 'umd',
         umdName: 'TDesignUI',

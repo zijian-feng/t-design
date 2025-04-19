@@ -12,7 +12,6 @@
     "docs:preview": "rspress preview",
     "prepare": "husky",
     "preinstall": "node -e \"if(process.env.npm_execpath.indexOf('pnpm') === -1) { console.error('请使用pnpm安装依赖'); process.exit(1); }\"",
-    "build:cpn": "rslib build -c config/rslib.config.ts",
     "commit": "git add . && czg --api-key=\"sk-3ac8381c617c493e9b278f366f3ee18e\" --api-endpoint=\"https://api.deepseek.com\" --api-model=\"deepseek-chat\" && czg ai"
   },
   "keywords": [],
