@@ -1,4 +1,4 @@
-# T Design UI
+# Trove UI
 
 ![Trove UI](public/docs/images/banner.png)
 
