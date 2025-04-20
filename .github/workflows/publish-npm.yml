@@ -27,7 +27,7 @@ jobs:
       - name: Build components
         run: ./shell/build.sh $PACKAGE_VERSION
       - name: Enter Build Directory
-        run: cd ./dist/@t-design-ui
+        run: cd ./dist/@trove-ui
       - name: Publish new versions on npm
         run: npm publish --provenance --access public
         env:

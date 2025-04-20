@@ -15,7 +15,7 @@ async function main() {
           ...(await glob(
             resolve(
               __dirname,
-              `../dist/@t-design-ui/react/${format}/components/**/*.d.{ts,mts}`
+              `../dist/@trove-ui/react/${format}/components/**/*.d.{ts,mts}`
             )
           ))
         )
@@ -30,7 +30,7 @@ async function main() {
     //  移除原类型文件目录
     for (const format of ['lib', 'es', 'dist']) {
       await rm(
-        resolve(__dirname, `../dist/@t-design-ui/react/${format}/components`),
+        resolve(__dirname, `../dist/@trove-ui/react/${format}/components`),
         { recursive: true }
       )
     }

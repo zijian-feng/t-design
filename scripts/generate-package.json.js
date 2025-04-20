@@ -8,7 +8,7 @@ async function main() {
   const version = versionArg ? versionArg.split('=')[1] : '0.1.0'
   let packageJsonPath = resolve(
     __dirname,
-    '../dist/@t-design-ui/react/package.json'
+    '../dist/@trove-ui/react/package.json'
   )
   // 判断此操作是否为构建前的操作
   const isReady = process.argv.includes('--ready')
@@ -16,7 +16,7 @@ async function main() {
     packageJsonPath = resolve(__dirname, '../src/components/package.json')
   }
   const packageJson = {
-    name: '@t-design-ui/react',
+    name: '@trove-ui/react',
     version,
     description: 'A React component library for T Design UI',
     main: 'lib/index.js',

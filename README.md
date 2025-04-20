@@ -1,6 +1,6 @@
 # T Design UI
 
-![T Design Logo](public/docs/images/img.png)
+![Trove UI](public/docs/images/banner.png)
 
 > 基于React的现代UI组件库，提供优雅、高效且可定制的界面解决方案。
 >

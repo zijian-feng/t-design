@@ -2,7 +2,7 @@
 pageType: home
 
 hero:
-  name: TDesign
+  name: Trove UI
   text: 轻量化React组件库
   actions:
     - theme: brand
