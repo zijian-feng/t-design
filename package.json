@@ -20,7 +20,7 @@
   "packageManager": "pnpm@10.6.5",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/zijian-feng/t-design.git"
+    "url": "git+https://github.com/zijian-feng/trove-ui.git"
   },
   "dependencies": {
     "dayjs": "^1.11.13",
