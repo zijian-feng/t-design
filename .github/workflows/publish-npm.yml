@@ -37,6 +37,8 @@ jobs:
           git config user.name "zijian-feng"
           git config user.email "fengzijian@happcloudsign.com"
       - name: Publish new versions on npm
-        run: npm publish --provenance --access public
+        run: |
+          cd ./dist/@trove-ui
+          npm publish --provenance --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
