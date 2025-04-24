@@ -29,17 +29,15 @@ jobs:
           echo "Using version: $VERSION"
       - name: Build components
         run: ./shell/build.sh $PACKAGE_VERSION
-      - name: View dist
-        run: ls -alh dist/@trove-ui
       - name: Create Git Repository
-        working-directory: dist/@trove-ui
+        working-directory: dist/@trove-ui/react
         run: |
           # 创建一个新的 Git 仓库
           git init
           git config user.name "zijian-feng"
           git config user.email "fengzijian@happcloudsign.com"
       - name: Publish new versions on npm
-        working-directory: dist/@trove-ui
+        working-directory: dist/@trove-ui/react
         run: npm publish --provenance --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
