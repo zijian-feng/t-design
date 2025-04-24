@@ -34,6 +34,10 @@ async function main() {
       'react-dom': '^19.0.0',
       classnames: '^2.5.1'
     },
+    repository: {
+      type: 'git',
+      url: 'https://github.com/zijian-feng/trove-ui.git'
+    },
     exports: {
       '.': {
         browser: {
