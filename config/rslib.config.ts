@@ -1,10 +1,10 @@
-import { basename, dirname, resolve } from 'path'
-import { defineConfig, RslibConfig } from '@rslib/core'
 import { pluginReact } from '@rsbuild/plugin-react'
 import { pluginSass } from '@rsbuild/plugin-sass'
 import { pluginTypedCSSModules } from '@rsbuild/plugin-typed-css-modules'
-import { glob } from 'glob'
+import { defineConfig, RslibConfig } from '@rslib/core'
 import { writeFile } from 'fs/promises'
+import { glob } from 'glob'
+import { basename, dirname, resolve } from 'path'
 
 export default defineConfig(async () => {
   const entryFiles = await glob(
@@ -24,6 +24,7 @@ export default defineConfig(async () => {
     )
     .join('\n')
   const indexPath = resolve(__dirname, '../src/components/index.ts')
+  console.log('indexpath >>. ', indexPath)
   await writeFile(indexPath, indexContent)
 
   const distRoot = resolve(__dirname, '../dist/@trove-ui/react')
