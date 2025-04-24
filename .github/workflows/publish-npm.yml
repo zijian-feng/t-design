@@ -31,14 +31,14 @@ jobs:
         run: ./shell/build.sh $PACKAGE_VERSION
       - name: Create Git Repository
         run: |
-          cd ./dist/@trove-ui
+          cd dist/@trove-ui
           # 创建一个新的 Git 仓库
           git init
           git config user.name "zijian-feng"
           git config user.email "fengzijian@happcloudsign.com"
       - name: Publish new versions on npm
         run: |
-          cd ./dist/@trove-ui
+          cd dist/@trove-ui
           npm publish --provenance --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

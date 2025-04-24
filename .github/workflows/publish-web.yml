@@ -1,31 +1,33 @@
-name: Publish new versions on website
-run-name: ${{ github.actor }} - ${{ github.event_name }}
-on:
-  push:
-    branches:
-      - master
-jobs:
-  deploy:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-      - name: Add SSH key
-        run: |
-          echo "${{ secrets.SSH_PEM_KEY }}" > ~/.ssh/deploy_key.pem
-          chmod 600 ~/.ssh/deploy_key.pem
-      - name: Run deployment script over ssh
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ secrets.SSH_HOST }}
-          username: ${{ secrets.SSH_USER }}
-          key: ${{ secrets.SSH_PEM_KEY }}
-          script: |
-            cd /var/www/html
-            git pull
-            npm install
-            npm run build
-            npm run start
-      - name: Cleanup
-        run: |
-          rm ~/.ssh/deploy_key.pem
+# name: Publish new versions on website
+# run-name: ${{ github.actor }} - ${{ github.event_name }}
+# on:
+#   push:
+#     branches:
+#       - master
+# jobs:
+#   deploy:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Checkout repository
+#         uses: actions/checkout@v4
+#       - name: Add SSH key
+#         run: |
+#           echo "${{ secrets.SSH_PEM_KEY }}" > ~/.ssh/deploy_key.pem
+#           chmod 600 ~/.ssh/deploy_key.pem
+#       - name: Run deployment script over ssh
+#         uses: appleboy/ssh-action@master
+#         with:
+#           host: ${{ secrets.SSH_HOST }}
+#           username: ${{ secrets.SSH_USER }}
+#           key: ${{ secrets.SSH_PEM_KEY }}
+#           script: |
+#             cd /var/www/html
+#             git pull
+#             npm install
+#             npm run build
+#             npm run start
+#       - name: Cleanup
+#         run: |
+#           rm ~/.ssh/deploy_key.pem
+
+# 輸出幾句話即可
