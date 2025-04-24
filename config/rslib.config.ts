@@ -24,7 +24,6 @@ export default defineConfig(async () => {
     )
     .join('\n')
   const indexPath = resolve(__dirname, '../src/components/index.ts')
-  console.log('indexpath >>. ', indexPath)
   await writeFile(indexPath, indexContent)
 
   const distRoot = resolve(__dirname, '../dist/@trove-ui/react')

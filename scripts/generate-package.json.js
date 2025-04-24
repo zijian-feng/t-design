@@ -15,6 +15,9 @@ async function main() {
   if (isReady) {
     packageJsonPath = resolve(__dirname, '../src/components/package.json')
   }
+
+  console.log('packageJsonPath >>> ', packageJsonPath)
+
   const packageJson = {
     name: '@trove-ui/react',
     version,

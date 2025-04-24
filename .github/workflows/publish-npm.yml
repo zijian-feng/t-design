@@ -29,6 +29,8 @@ jobs:
           echo "Using version: $VERSION"
       - name: Build components
         run: ./shell/build.sh $PACKAGE_VERSION
+      - name: View dist
+        run: ls -alh dist/@trove-ui
       - name: Create Git Repository
         working-directory: dist/@trove-ui
         run: |
