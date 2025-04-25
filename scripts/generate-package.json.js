@@ -25,7 +25,16 @@ async function main() {
     main: 'lib/index.js',
     module: 'es/index.js',
     typings: 'es/index.d.ts',
-    keywords: [],
+    keywords: [
+      'react',
+      'react-component',
+      'react-library',
+      'react-library-component',
+      'react-library-ui',
+      'trove',
+      'trove-ui',
+      'ui'
+    ],
     author: 'fengzijian <fengzijian@happycloudsign.com>',
     license: 'ISC',
     packageManager: 'pnpm@10.6.5',
@@ -37,16 +46,6 @@ async function main() {
     repository: {
       type: 'git',
       url: 'https://github.com/zijian-feng/trove-ui.git'
-    },
-    exports: {
-      '.': {
-        browser: {
-          default: './es/index.mjs'
-        },
-        node: {
-          default: './lib/index.js'
-        }
-      }
     }
   }
   await writeFile(packageJsonPath, JSON.stringify(packageJson, null, 2))

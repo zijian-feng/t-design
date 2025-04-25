@@ -27,13 +27,6 @@ async function main() {
     for (const file of typeFiles) {
       await copyFile(file, file.replace('/components', ''))
     }
-    //  移除原类型文件目录
-    for (const format of ['lib', 'es', 'dist']) {
-      await rm(
-        resolve(__dirname, `../dist/@trove-ui/react/${format}/components`),
-        { recursive: true }
-      )
-    }
   } catch (error) {
     console.error('Error reorganizing type files:', error)
   }

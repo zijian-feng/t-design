@@ -1,9 +1,15 @@
 import classNames from 'classnames'
 import styles from './index.module.scss'
-import { num_to_px } from '../../utils/num_to_px'
 import { CSSProperties, HTMLAttributes, ReactNode, useMemo } from 'react'
 
 export type Align = 'left' | 'center' | 'right'
+
+const num_to_px = (value?: number | string) => {
+  if (typeof value === 'number') {
+    return `${value}px`
+  }
+  return value
+}
 
 export type TableHeader<T> = {
   [K in keyof T]: {

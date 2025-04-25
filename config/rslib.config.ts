@@ -19,10 +19,17 @@ export default defineConfig(async () => {
 
   // 先更新 components 下的 index.ts 文件
   const indexContent = Object.keys(entry)
-    .map(
-      (entryName) => `export { default as ${entryName} } from './${entryName}'`
-    )
+    .map((entryName) => `import ${entryName} from './${entryName}'`)
     .join('\n')
+    .concat('\n')
+    .concat("import './index.scss'")
+    .concat('\n')
+    .concat('\n\n')
+    .concat(
+      `export {\n  ${Object.keys(entry).join(', \n  ')}\n}
+      `
+    )
+    .concat('\n')
   const indexPath = resolve(__dirname, '../src/components/index.ts')
   await writeFile(indexPath, indexContent)
 
@@ -30,11 +37,7 @@ export default defineConfig(async () => {
   return {
     lib: [
       {
-        dts: {
-          bundle: false,
-          distPath: undefined,
-          autoExtension: true
-        },
+        dts: true,
         format: 'cjs',
         output: {
           distPath: {
@@ -43,11 +46,7 @@ export default defineConfig(async () => {
         }
       },
       {
-        dts: {
-          bundle: false,
-          distPath: undefined,
-          autoExtension: true
-        },
+        dts: true,
         format: 'esm',
         output: {
           distPath: {
@@ -56,11 +55,7 @@ export default defineConfig(async () => {
         }
       },
       {
-        dts: {
-          bundle: false,
-          distPath: undefined,
-          autoExtension: true
-        },
+        dts: true,
         format: 'umd',
         umdName: 'TDesignUI',
         output: {
@@ -74,7 +69,7 @@ export default defineConfig(async () => {
     source: {
       tsconfigPath: resolve(__dirname, '../src/components/tsconfig.json'),
       entry: {
-        index: resolve(__dirname, '../src/components/index.ts'),
+        index: indexPath,
         ...entry
       }
     },
@@ -102,7 +97,18 @@ export default defineConfig(async () => {
         'react',
         'react-dom',
         'classnames',
-        ...Object.keys(entry).map((key) => new RegExp(key))
+        ({ request }, callback) => {
+          const rules = Object.keys(entry).map(
+            (key) => new RegExp(`^./${key}$`)
+          )
+          const isValid =
+            request && rules.findIndex((rule) => rule.test(request)) !== -1
+          if (isValid) {
+            console.log(request)
+            callback(undefined, true)
+          }
+          callback()
+        }
       ]
     }
   } as RslibConfig
