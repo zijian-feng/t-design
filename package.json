@@ -23,9 +23,11 @@
     "url": "git+https://github.com/zijian-feng/trove-ui.git"
   },
   "dependencies": {
+    "@trove-ui/react": "^0.9.1",
     "dayjs": "^1.11.13",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "styled-components": "^6.1.17"
   },
   "devDependencies": {
     "@ant-design/icons": "^6.0.0",
@@ -74,5 +76,8 @@
       "path": "node_modules/cz-git",
       "czConfig": "./config/cz.config.mjs"
     }
+  },
+  "resolutions": {
+    "styled-components": "^5"
   }
 }

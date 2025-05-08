@@ -41,11 +41,15 @@ async function main() {
     dependencies: {
       react: '^19.0.0',
       'react-dom': '^19.0.0',
-      classnames: '^2.5.1'
+      classnames: '^2.5.1',
+      'styled-components': '^6.1.17'
     },
     repository: {
       type: 'git',
       url: 'https://github.com/zijian-feng/trove-ui.git'
+    },
+    resolutions: {
+      'styled-components': '^5'
     }
   }
   await writeFile(packageJsonPath, JSON.stringify(packageJson, null, 2))

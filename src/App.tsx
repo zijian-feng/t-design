@@ -1,16 +1,14 @@
 import './App.scss'
 import { useState } from 'react'
-import Flex from './components/Flex'
-import Rate from './components/Rate'
-import { Button } from './components'
-
+import ConfigProvider from '@/components/ConfigProvider'
+import UrlInputField from './components/Input/sample/UrlInputField'
 const App = () => {
-  const [state, setState] = useState(3)
+  const [size] = useState<'small' | 'medium' | 'large'>('large')
+  const [prefixCls] = useState('t')
   return (
-    <Flex gap={20} align="center">
-      <Rate allowHalf value={state} onChange={setState} />
-      <Button onClick={() => setState(4)}>click</Button>
-    </Flex>
+    <ConfigProvider size={size} prefixCls={prefixCls}>
+      <UrlInputField />
+    </ConfigProvider>
   )
 }
 
